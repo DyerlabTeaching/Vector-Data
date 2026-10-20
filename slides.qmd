@@ -348,7 +348,7 @@ ggplot() +
 # Buffers & Neighborhoods {background-color="black" background-image="media/contour.png" background-size="initial" background-position="right"}
 
 
-## Dogwood Trees {.smaller}
+## Dogwood Trees {.scrollable}
 
 Maternal dogwood trees sampled from the city of Richmond south to Pocahontas State Park.  We start with the 15 `Preliminary` trees (5 per `Habitat`), sorted south to north.
 
