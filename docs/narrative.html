@@ -146,8 +146,8 @@ window.Quarto = {
 <li>Import vector data from ESRI shapefiles, the format most GIS software produces.</li>
 <li>Use spatial joins to select and combine features by <em>where</em> they are instead of by a key column.</li>
 </ul>
-<section id="lines" class="level2">
-<h2 class="anchored" data-anchor-id="lines">Lines</h2>
+<section id="lines" class="level2 application">
+<h2 class="application anchored" data-anchor-id="lines">Lines</h2>
 <section id="lines-de-novo" class="level3">
 <h3 class="anchored" data-anchor-id="lines-de-novo">Lines <em>de novo</em></h3>
 <p>A line is just a sequence of points, connected in the order given. So let’s start with some points. Here I make 10 random locations in central Virginia, five belonging to <code>Rodney</code> and five to <code>Sarah</code>, each with a bit of <code>Data</code> attached.</p>
@@ -281,7 +281,7 @@ Geodetic CRS:  WGS 84
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(units)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>udunits database from /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/units/share/udunits/udunits2.xml</code></pre>
+<pre><code>udunits database from /Library/Frameworks/R.framework/Versions/4.6/Resources/library/units/share/udunits/udunits2.xml</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lines <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">|&gt;</span></span>
@@ -304,8 +304,8 @@ Geodetic CRS:  WGS 84
 </div>
 </section>
 </section>
-<section id="polygons" class="level2">
-<h2 class="anchored" data-anchor-id="polygons">Polygons</h2>
+<section id="polygons" class="level2 application">
+<h2 class="application anchored" data-anchor-id="polygons">Polygons</h2>
 <p>A polygon is simply a line whose first and last coordinates are exactly the same, so it closes upon itself. To see this, here are our points again with the first point of each person repeated at the end of their sequence.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.p <span class="ot">&lt;-</span> df[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">6</span>), ]</span>
@@ -465,8 +465,8 @@ Attaching package: 'maps'</code></pre>
 </div>
 </section>
 </section>
-<section id="buffers-and-neighborhoods" class="level2">
-<h2 class="anchored" data-anchor-id="buffers-and-neighborhoods">Buffers and Neighborhoods</h2>
+<section id="buffers-and-neighborhoods" class="level2 application">
+<h2 class="application anchored" data-anchor-id="buffers-and-neighborhoods">Buffers and Neighborhoods</h2>
 <p>Lines and polygons become really useful when we build them around real data. Here we will use a set of dogwood trees sampled along a transect running from the city of Richmond, Virginia south to Pocahontas State Park. Each row is a maternal tree, and the columns are:</p>
 <ul>
 <li><code>Mother</code>: The type of maternal tree, <code>Cultivar</code> or <code>Native</code>.</li>
@@ -690,8 +690,8 @@ Projected CRS: WGS 84 / UTM zone 17N
 </div>
 </section>
 </section>
-<section id="land-cover" class="level2">
-<h2 class="anchored" data-anchor-id="land-cover">Land Cover</h2>
+<section id="land-cover" class="level2 application">
+<h2 class="application anchored" data-anchor-id="land-cover">Land Cover</h2>
 <p>A natural question about the neighborhoods we just built is: <em>what is in them?</em> The <a href="https://www.mrlc.gov/data">National Land Cover Database</a> (NLCD) classifies every 30 m × 30 m cell of the United States into one of 16 land cover classes (open water, four intensities of development, three kinds of forest, wetlands, agriculture, etc.). Data like this, a grid of cells each holding a value, are called a <em>raster</em>, and we will learn to work with them directly in a later topic.</p>
 <p>For now, we will treat that part as a black box. The function <code>get_landcover()</code> takes an <code>sf</code> object of polygons, finds the NLCD cells inside each one (using the 2021 NLCD for this study area), and returns the proportion of each polygon covered by each of seven broad categories: <code>Water</code>, <code>Developed</code>, <code>Barren</code>, <code>Forest</code>, <code>Shrub/Grass</code>, <code>Agriculture</code>, and <code>Wetland</code>. You can load it directly from its web address with <code>source()</code>, or download <a href="https://dyerlabteaching.github.io/Vector-Data/get_landcover.R">the file</a> into your project and <code>source( "get_landcover.R" )</code>.</p>
 <div class="cell">
@@ -894,8 +894,8 @@ Projected CRS: WGS 84 / UTM zone 17N
 </div>
 <p>A single straight transect averages over everything between its endpoints, so it does not look like any of the places the trees actually are.</p>
 </section>
-<section id="shapefiles" class="level2">
-<h2 class="anchored" data-anchor-id="shapefiles">Shapefiles</h2>
+<section id="shapefiles" class="level2 application">
+<h2 class="application anchored" data-anchor-id="shapefiles">Shapefiles</h2>
 <p>Most of the time we are not going to make vector data by hand; we will load it from a file someone else created, often with GIS software such as ArcGIS or QGIS. This section is a tour of what that looks like in <code>R</code>. A very common format for this is the ESRI <em>shapefile</em>, which can hold <code>POINT</code>, <code>LINESTRING</code>, <code>POLYGON</code> and other vector types.</p>
 <p>The first thing to understand is that <em>a shapefile</em> is not an actual file. It is a collection of several files with the same name and different extensions, and they are usually zipped up into a single archive.</p>
 <section id="downloading-the-archives" class="level3">
@@ -967,7 +967,7 @@ Projected CRS: WGS 84 / UTM zone 17N
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>districts <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(shp_dir, <span class="st">"Zoning_Districts.shp"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `Zoning_Districts' from data source 
-  `/private/var/folders/ph/r0036_7d65x3k680vc73qbj40000gn/T/RtmpFmy1Kd/Zoning_Districts.shp' 
+  `/private/var/folders/57/_81c61111l10c9c_pt_bb7y80000gn/T/RtmpDeF5QB/Zoning_Districts.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 634 features and 14 fields
 Geometry type: MULTIPOLYGON
@@ -1080,8 +1080,8 @@ Projected CRS: NAD83 / Virginia South (ftUS)
 </div>
 </section>
 </section>
-<section id="vector-operations" class="level2">
-<h2 class="anchored" data-anchor-id="vector-operations">Vector Operations</h2>
+<section id="vector-operations" class="level2 application">
+<h2 class="application anchored" data-anchor-id="vector-operations">Vector Operations</h2>
 <p>Spatial data sets can be combined using their <em>positions</em>: which features intersect, touch, contain, or are within some distance of each other. These are called <em>spatial joins</em>, and there are a lot of them. Check out the <a href="https://github.com/rstudio/cheatsheets/blob/main/sf.pdf"><code>sf</code> cheatsheet</a> for the full list.</p>
 <section id="a-second-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="a-second-data-set">A Second Data Set</h3>
@@ -1093,7 +1093,7 @@ Projected CRS: NAD83 / Virginia South (ftUS)
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `tran_Carriageway' from data source 
-  `/private/var/folders/ph/r0036_7d65x3k680vc73qbj40000gn/T/RtmpFmy1Kd/Centerlines-shp/tran_Carriageway.shp' 
+  `/private/var/folders/57/_81c61111l10c9c_pt_bb7y80000gn/T/RtmpDeF5QB/Centerlines-shp/tran_Carriageway.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 29081 features and 25 fields
 Geometry type: LINESTRING
@@ -1147,14 +1147,14 @@ Projected CRS: NAD83 / Virginia South (ftUS)</code></pre>
 <span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a>        ) <span class="ot">-&gt;</span> roads</span>
 <span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(roads)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   FullName          OneWay                    StreetType      SpeedLimit   
- Length:29081       1   :    2   Alley              : 3139   Min.   : 0.00  
- Class :character   FT  : 3225   Artery             : 5201   1st Qu.:25.00  
- Mode  :character   TF  : 3148   Highway            :  384   Median :25.00  
-                    NA's:22706   Highway Interchange:   93   Mean   :25.17  
-                                 Private            : 1540   3rd Qu.:25.00  
-                                 Ramp               :  378   Max.   :55.00  
-                                 Secondary          :18346   NA's   :7959   
+<pre><code>      FullName     OneWay                    StreetType      SpeedLimit   
+ Length   :29081   1  :    2   Alley              : 3139   Min.   : 0.00  
+ N.unique : 4081   FT : 3225   Artery             : 5201   1st Qu.:25.00  
+ N.blank  :    0   TF : 3148   Highway            :  384   Median :25.00  
+ Min.nchar:    3   NAs:22706   Highway Interchange:   93   Mean   :25.17  
+ Max.nchar:   46               Private            : 1540   3rd Qu.:25.00  
+ NAs      : 4526               Ramp               :  378   Max.   :55.00  
+                               Secondary          :18346   NAs    :7959   
      Length                   geometry    
  Min.   :    2.943   LINESTRING   :29081  
  1st Qu.:  164.849   epsg:2284    :    0  
@@ -1176,14 +1176,14 @@ Projected CRS: NAD83 / Virginia South (ftUS)</code></pre>
 <span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> highways</span>
 <span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(highways)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   FullName          OneWay                  StreetType    SpeedLimit   
- Length:855         1   :  0   Alley              :  0   Min.   : 0.00  
- Class :character   FT  :416   Artery             :  0   1st Qu.:25.00  
- Mode  :character   TF  :408   Highway            :384   Median :25.00  
-                    NA's: 31   Highway Interchange: 93   Mean   :36.19  
-                               Private            :  0   3rd Qu.:55.00  
-                               Ramp               :378   Max.   :55.00  
-                               Secondary          :  0   NA's   :131    
+<pre><code>      FullName   OneWay                  StreetType    SpeedLimit   
+ Length   :855   1  :  0   Alley              :  0   Min.   : 0.00  
+ N.unique :170   FT :416   Artery             :  0   1st Qu.:25.00  
+ N.blank  :  0   TF :408   Highway            :384   Median :25.00  
+ Min.nchar:  3   NAs: 31   Highway Interchange: 93   Mean   :36.19  
+ Max.nchar: 46             Private            :  0   3rd Qu.:55.00  
+ NAs      : 18             Ramp               :378   Max.   :55.00  
+                           Secondary          :  0   NAs    :131    
      Length                  geometry  
  Min.   :   14.46   LINESTRING   :855  
  1st Qu.:  276.48   epsg:2284    :  0  

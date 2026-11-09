@@ -1009,7 +1009,7 @@ Back to the in-class activity for <strong>Part 2: Land Cover</strong>.
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">st_read</span>(<span class="fu">file.path</span>(shp_dir, <span class="st">"Zoning_Districts.shp"</span>)) <span class="ot">-&gt;</span> districts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `Zoning_Districts' from data source 
-  `/private/var/folders/ph/r0036_7d65x3k680vc73qbj40000gn/T/RtmpekHwVJ/Zoning_Districts.shp' 
+  `/private/var/folders/57/_81c61111l10c9c_pt_bb7y80000gn/T/Rtmpk8NrkO/Zoning_Districts.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 634 features and 14 fields
 Geometry type: MULTIPOLYGON
@@ -1148,7 +1148,7 @@ Projected CRS: NAD83 / Virginia South (ftUS)
 <span id="cb74-4"><a href=""></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `tran_Carriageway' from data source 
-  `/private/var/folders/ph/r0036_7d65x3k680vc73qbj40000gn/T/RtmpekHwVJ/Centerlines-shp/tran_Carriageway.shp' 
+  `/private/var/folders/57/_81c61111l10c9c_pt_bb7y80000gn/T/Rtmpk8NrkO/Centerlines-shp/tran_Carriageway.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 29081 features and 25 fields
 Geometry type: LINESTRING
@@ -1204,14 +1204,14 @@ Projected CRS: NAD83 / Virginia South (ftUS)</code></pre>
 <span id="cb81-10"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">OneWay =</span> <span class="fu">factor</span>(OneWay), <span class="at">StreetType =</span> <span class="fu">factor</span>(StreetType)) <span class="ot">-&gt;</span> roads</span>
 <span id="cb81-11"><a href=""></a><span class="fu">summary</span>(roads)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   FullName          OneWay                    StreetType      SpeedLimit   
- Length:29081       1   :    2   Alley              : 3139   Min.   : 0.00  
- Class :character   FT  : 3225   Artery             : 5201   1st Qu.:25.00  
- Mode  :character   TF  : 3148   Highway            :  384   Median :25.00  
-                    NA's:22706   Highway Interchange:   93   Mean   :25.17  
-                                 Private            : 1540   3rd Qu.:25.00  
-                                 Ramp               :  378   Max.   :55.00  
-                                 Secondary          :18346   NA's   :7959   
+<pre><code>      FullName     OneWay                    StreetType      SpeedLimit   
+ Length   :29081   1  :    2   Alley              : 3139   Min.   : 0.00  
+ N.unique : 4081   FT : 3225   Artery             : 5201   1st Qu.:25.00  
+ N.blank  :    0   TF : 3148   Highway            :  384   Median :25.00  
+ Min.nchar:    3   NAs:22706   Highway Interchange:   93   Mean   :25.17  
+ Max.nchar:   46               Private            : 1540   3rd Qu.:25.00  
+ NAs      : 4526               Ramp               :  378   Max.   :55.00  
+                               Secondary          :18346   NAs    :7959   
      Length                   geometry    
  Min.   :    2.943   LINESTRING   :29081  
  1st Qu.:  164.849   epsg:2284    :    0  
@@ -1232,14 +1232,14 @@ Projected CRS: NAD83 / Virginia South (ftUS)</code></pre>
 <span id="cb83-4"><a href=""></a>  ) <span class="ot">-&gt;</span> highways</span>
 <span id="cb83-5"><a href=""></a><span class="fu">summary</span>(highways)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   FullName          OneWay                  StreetType    SpeedLimit   
- Length:855         1   :  0   Alley              :  0   Min.   : 0.00  
- Class :character   FT  :416   Artery             :  0   1st Qu.:25.00  
- Mode  :character   TF  :408   Highway            :384   Median :25.00  
-                    NA's: 31   Highway Interchange: 93   Mean   :36.19  
-                               Private            :  0   3rd Qu.:55.00  
-                               Ramp               :378   Max.   :55.00  
-                               Secondary          :  0   NA's   :131    
+<pre><code>      FullName   OneWay                  StreetType    SpeedLimit   
+ Length   :855   1  :  0   Alley              :  0   Min.   : 0.00  
+ N.unique :170   FT :416   Artery             :  0   1st Qu.:25.00  
+ N.blank  :  0   TF :408   Highway            :384   Median :25.00  
+ Min.nchar:  3   NAs: 31   Highway Interchange: 93   Mean   :36.19  
+ Max.nchar: 46             Private            :  0   3rd Qu.:55.00  
+ NAs      : 18             Ramp               :378   Max.   :55.00  
+                           Secondary          :  0   NAs    :131    
      Length                  geometry  
  Min.   :   14.46   LINESTRING   :855  
  1st Qu.:  276.48   epsg:2284    :  0  
@@ -1350,22 +1350,22 @@ Projected CRS: NAD83 / Virginia South (ftUS)</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="fu">summary</span>(theFan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    OBJECTID           Name                  Category   Ordinance        
- Min.   :   5.0   R-7    :11   Business          :22   Length:91         
- 1st Qu.: 270.5   R-53   : 9   Institutional     : 1   Class :character  
- Median : 377.0   R-6    : 9   Industrial        : 7   Mode  :character  
- Mean   : 498.3   B-1    : 7   Residential       :46                     
- 3rd Qu.: 505.0   R-63   : 5   Residential Office: 4                     
- Max.   :1872.0   R-73   : 5   Transit-Oriented  : 2                     
-                  (Other):45   Urban Business    : 9                     
-  OrdinanceP         Conditiona          AdoptionDa           GlobalID        
- Length:91          Length:91          Min.   :2000-01-01   Length:91         
- Class :character   Class :character   1st Qu.:2000-01-01   Class :character  
- Mode  :character   Mode  :character   Median :2001-10-08   Mode  :character  
-                                       Mean   :2005-06-16                     
-                                       3rd Qu.:2008-02-18                     
-                                       Max.   :2020-02-24                     
-                                                                              
+<pre><code>    OBJECTID           Name                  Category      Ordinance 
+ Min.   :   5.0   R-7    :11   Business          :22   Length   :91  
+ 1st Qu.: 270.5   R-53   : 9   Institutional     : 1   N.unique :19  
+ Median : 377.0   R-6    : 9   Industrial        : 7   N.blank  : 0  
+ Mean   : 498.3   B-1    : 7   Residential       :46   Min.nchar: 8  
+ 3rd Qu.: 505.0   R-63   : 5   Residential Office: 4   Max.nchar:12  
+ Max.   :1872.0   R-73   : 5   Transit-Oriented  : 2   NAs      :41  
+                  (Other):45   Urban Business    : 9                 
+     OrdinanceP      Conditiona   AdoptionDa              GlobalID 
+ Length   : 91   Length   :91   Min.   :2000-01-01   Length   :91  
+ N.unique : 10   N.unique : 2   1st Qu.:2000-01-01   N.unique :91  
+ N.blank  :  0   N.blank  : 0   Median :2001-10-08   N.blank  : 0  
+ Min.nchar: 72   Min.nchar: 2   Mean   :2005-06-16   Min.nchar:36  
+ Max.nchar:140   Max.nchar: 3   3rd Qu.:2008-02-18   Max.nchar:36  
+ NAs      : 41                  Max.   :2020-02-24                 
+                                                                   
           geometry 
  MULTIPOLYGON : 4  
  POLYGON      :87  
